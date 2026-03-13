@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vigenere Cipher</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Vigenere Cipher 🔐</h1>
+<p>Encrypt using a keyword for multiple shifts.</p>
+
+<textarea id="text" placeholder="Enter text"></textarea>
+<input type="text" id="key" placeholder="Enter keyword">
+<button onclick="encryptVigenere()">Encrypt</button>
+
+<p id="error"></p>
+<h3>Result</h3>
+<div id="result"></div>
+
+<a href="index.html">← Back to Home</a>
+</div>
+
+<script src="js/crypto.js"></script>
+<script>
+function encryptVigenere(){
+    let text=document.getElementById("text").value;
+    let key=document.getElementById("key").value;
+    if(key.length===0){document.getElementById("error").innerText="Please enter a keyword"; return;}
+    document.getElementById("result").innerText=vigenere(text,key);
+}
+</script>
+</body>
+</html>

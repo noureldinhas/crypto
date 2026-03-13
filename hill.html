@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hill Cipher</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Hill Cipher 🔐</h1>
+<p>2x2 matrix cipher. Enter 4 numbers as key: a,b,c,d</p>
+
+<textarea id="text" placeholder="Enter text"></textarea>
+<input type="text" id="key" placeholder="Example: 3,3,2,5">
+<button onclick="encryptHill()">Encrypt</button>
+
+<p id="error"></p>
+<h3>Result</h3>
+<div id="result"></div>
+
+<a href="index.html">← Back to Home</a>
+</div>
+
+<script src="js/crypto.js"></script>
+<script>
+function encryptHill(){
+    let text=document.getElementById("text").value;
+    let key=document.getElementById("key").value;
+    let parts=key.split(",");
+    if(parts.length!==4){document.getElementById("error").innerText="Enter 4 numbers separated by commas"; return;}
+    document.getElementById("result").innerText=hill(text,key);
+}
+</script>
+</body>
+</html>

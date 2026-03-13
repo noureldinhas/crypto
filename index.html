@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cryptography Tool</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>🔐 Cryptography Tool</h1>
+
+<div class="card">
+    <h2>Quick Encrypt</h2>
+    <textarea id="text" placeholder="Enter your text"></textarea><br>
+    <select id="method">
+        <option value="">Select Cipher</option>
+        <option value="caesar">Caesar Cipher</option>
+        <option value="substitution">Substitution Cipher</option>
+        <option value="vigenere">Vigenere Cipher</option>
+        <option value="railfence">Rail Fence Cipher</option>
+        <option value="atbash">Atbash Cipher</option>
+        <option value="playfair">Playfair Cipher</option>
+        <option value="hill">Hill Cipher</option>
+        <option value="affine">Affine Cipher</option>
+    </select><br>
+    <input type="text" id="key" placeholder="Enter key if required"><br>
+    <button onclick="quickEncrypt()">Encrypt</button>
+    <p id="error"></p>
+    <div id="result"></div>
+</div>
+
+<h2>Encryption Methods</h2>
+
+<div class="card">
+    <h3>Caesar Cipher</h3>
+    <p>Shift letters by a fixed number.</p>
+    <a href="caesar.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Substitution Cipher</h3>
+    <p>Replace letters using a key alphabet.</p>
+    <a href="substitution.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Vigenere Cipher</h3>
+    <p>Encrypt using a keyword for multiple shifts.</p>
+    <a href="vigenere.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Rail Fence Cipher</h3>
+    <p>Zigzag letter transposition.</p>
+    <a href="railfence.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Atbash Cipher</h3>
+    <p>Reverse alphabet cipher.</p>
+    <a href="atbash.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Playfair Cipher</h3>
+    <p>5x5 matrix encryption using a keyword.</p>
+    <a href="playfair.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Hill Cipher</h3>
+    <p>2x2 matrix cipher using 4 numbers.</p>
+    <a href="hill.html">Open</a>
+</div>
+
+<div class="card">
+    <h3>Affine Cipher</h3>
+    <p>Mathematical shift cipher using 2 numbers.</p>
+    <a href="affine.html">Open</a>
+</div>
+
+<script src="js/crypto.js"></script>
+<script>
+function quickEncrypt(){
+    let text=document.getElementById("text").value;
+    let method=document.getElementById("method").value;
+    let key=document.getElementById("key").value;
+    let result="";
+    document.getElementById("error").innerText="";
+    try{
+        if(method==="caesar") result=caesar(text,parseInt(key));
+        else if(method==="vigenere") result=vigenere(text,key);
+        else if(method==="substitution") result=substitution(text,key);
+        else if(method==="railfence") result=railFence(text,parseInt(key));
+        else if(method==="atbash") result=atbash(text);
+        else if(method==="playfair") result=playfair(text,key);
+        else if(method==="hill") result=hill(text,key);
+        else if(method==="affine") result=affine(text,key);
+        else {document.getElementById("error").innerText="Please select a cipher."; return;}
+    }catch(e){document.getElementById("error").innerText="Error! Check your key or input."; return;}
+    document.getElementById("result").innerText=result;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Atbash Cipher</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Atbash Cipher 🔐</h1>
+<p>Reverse alphabet cipher.</p>
+
+<textarea id="text" placeholder="Enter text"></textarea>
+<button onclick="encryptAtbash()">Encrypt</button>
+
+<p id="error"></p>
+<h3>Result</h3>
+<div id="result"></div>
+
+<a href="index.html">← Back to Home</a>
+</div>
+
+<script src="js/crypto.js"></script>
+<script>
+function encryptAtbash(){
+    let text=document.getElementById("text").value;
+    document.getElementById("result").innerText=atbash(text);
+}
+</script>
+</body>
+</html>

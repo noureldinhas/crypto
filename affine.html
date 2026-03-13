@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Affine Cipher</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Affine Cipher 🔐</h1>
+<p>Mathematical shift cipher. Enter 2 numbers a,b</p>
+
+<textarea id="text" placeholder="Enter text"></textarea>
+<input type="text" id="key" placeholder="Example: 5,8">
+<button onclick="encryptAffine()">Encrypt</button>
+
+<p id="error"></p>
+<h3>Result</h3>
+<div id="result"></div>
+
+<a href="index.html">← Back to Home</a>
+</div>
+
+<script src="js/crypto.js"></script>
+<script>
+function encryptAffine(){
+    let text=document.getElementById("text").value;
+    let key=document.getElementById("key").value;
+    let parts=key.split(",");
+    if(parts.length!==2){document.getElementById("error").innerText="Enter 2 numbers separated by comma"; return;}
+    document.getElementById("result").innerText=affine(text,key);
+}
+</script>
+</body>
+</html>
